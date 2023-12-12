@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test Photo Sales</title>
+        <style>
+            img {
+                max-width: 30vw;
+                max-height: 15vh;
+            }
+            body {
+                background-image: url("{% static 'images/strawberry.jpg' %}");
+            }
+        </style>
+    </head>
+    <body>
+        <h1>This Page Is Here To Test Live Sales Online</h1>
+        <h3>You are welcome to buy photos if you want but feel free to just download them if you really want to</h3>
+        <h5>Cant imagine why though</h5>
+        {% for image in images %}
+        <div>
+            <h5>{{ image.heading }}</h5>
+            <img src="{{ image.image.url }}">
+            <a href="{% url 'photo_buy' buy=image.heading %}"><button>buy now</button></a>
+        </div>
+        {% endfor %}
+    </body>
+</html>

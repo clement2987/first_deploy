@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test Photo Sales</title>
+        <style>
+            img {
+                max-width: 30vw;
+                max-height: 15vh;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>review order</h1>
+        
+        <div>
+            <h5>{{ image.heading }}</h5>
+            <img src="{{ image.image.url }}">
+        </div>
+        <form method="post" action="{% url 'purchase' %}">
+            {% csrf_token %}
+            <input type="email" name="email">
+            <input type="text" name="image" value="{{ image.heading }}" hidden>
+            <input type="submit" valie="proceed to checkout">
+        </form>
+    </body>
+</html>
